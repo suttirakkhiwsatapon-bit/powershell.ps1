@@ -13,7 +13,7 @@ Write-Host @"
 
 Write-Host ""
 
-$correctKey = "ryzenxking"
+$correctKey = "key-zenq-x1tzy"
 
 $key = Read-Host "Enter License Key"
 
