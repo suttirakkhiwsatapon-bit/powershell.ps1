@@ -20,7 +20,7 @@ function Show-Menu {
 # Check License Key
 # -------------------------------------------------------------------------
 Clear-Host
-$correctKey = "ryzenxking"
+$correctKey = "key-zenq-x1tzy"
 $key = Read-Host "Enter License Key"
 
 if ($key -ne $correctKey) {
