@@ -1,26 +1,22 @@
 Clear-Host
 
-# แสดง ASCII Art หัวข้อสคริปต์
 Write-Host @"
-  _____   __ __  ____  ___ ___  _  ____   ____  ____    ____       ___   ____  ______  ____ ___ ___ ____ _____  ___ ___  ____ 
- |     | |  |  ||  _  ||  _  _|| |/    | |    ||    \  /    |     /   \ |    \|      ||   |   |   |    / ___/ /   |   |/    |
- |   --' |  |  ||  |_| ||  |_| ||  |  |  ||  |_ ||  _  ||  o  |    |     ||  o  ||  ||  ||   |   |   ||  |_(  \_|   |   ||  o  |
- |  |    |  ~  ||   ___||   ___||  |  |  ||     ||  |  ||     |    |  O  ||   _/ |  ||  ||   |   |   ||   __)\   |   |   ||    |
- |  |    |___, ||  |    |  |    |  |  |  ||  _  ||  |  ||  _  |    |     ||  |   |  ||  ||   |   |   ||  |_  /   |___|___||  _  |
- |  |__  |     ||  |    |  |    |  |  |  ||  |  ||  |  ||  |  |    |     ||  |   |  ||  ||   |   |   ||   _||    |   |   ||  |  |
- |_____| |____/ |__|    |__|    |__|__|__||__|__||__|__||__|__|     \___/ |__|   |__||__||___|___|___||__|  \____|___|___||__|__|
+╔═╗┌─┐┌┐┌┌─┐   ╔═╗┌─┐┌┬┐┬┌┬┐┬┌─┐┌─┐┬─┐
+╔═╝├┤ ││││─┼┐  ║ ║├─┘ │ │││││┌─┘├┤ ├┬┘
+╚═╝└─┘┘└┘└─┘└  ╚═╝┴   ┴ ┴┴ ┴┴└─┘└─┘┴└─
 "@ -ForegroundColor Cyan
 
+Write-Host "=========================================================" -ForegroundColor DarkGray
+Write-Host "         FIVEM & FPS ULTIMATE PERFORMANCE SCRIPT         " -ForegroundColor Yellow
+Write-Host "=========================================================" -ForegroundColor DarkGray
 Write-Host ""
 
 $correctKey = "key-zenq-x1tzy"
-
 $key = Read-Host "Enter License Key"
 
 if ($key -eq $correctKey) {
     Write-Host "Key Correct! Running script..." -ForegroundColor Green
     Start-Sleep 2
-    Write-Host "Script Running Successfully!" -ForegroundColor Yellow
 } else {
     Write-Host "Wrong Key! Access Denied." -ForegroundColor Red
     Start-Sleep 3
@@ -44,7 +40,6 @@ Set-ItemProperty -Path $tcpPath -Name "KeepAliveInterval" -Value 1000 -Type DWor
 Set-ItemProperty -Path $tcpPath -Name "GlobalMaxTcpWindowSize" -Value 1079576 -Type DWord -Force
 Set-ItemProperty -Path $tcpPath -Name "MaxUserPort" -Value 65534 -Type DWord -Force
 
-# ปรับแต่ง Interface TCP
 $interfacesPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces"
 Get-ChildItem $interfacesPath | ForEach-Object {
     Set-ItemProperty -Path $_.PSPath -Name "TcpAckFrequency" -Value 1 -Type DWord -ErrorAction SilentlyContinue
@@ -70,7 +65,6 @@ Set-ItemProperty -Path $tasksGames -Name "Scheduling Category" -Value "High" -Ty
 Set-ItemProperty -Path $tasksGames -Name "SFIO Priority" -Value "High" -Type String -Force
 Set-ItemProperty -Path $tasksGames -Name "Latency Sensitive" -Value "True" -Type String -Force
 
-# CPU Priority
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -Type DWord -Force
 
 # =========================================================================
@@ -79,14 +73,12 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" 
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" -Name "MouseDataQueueSize" -Value 20 -Type DWord -Force
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "KeyboardDataQueueSize" -Value 20 -Type DWord -Force
 
-# ปิดการเร่งความเร็วเมาส์ (Mouse Acceleration)
 $mouseDesktop = "HKCU:\Control Panel\Mouse"
 Set-ItemProperty -Path $mouseDesktop -Name "MouseSpeed" -Value "0" -Type String -Force
 Set-ItemProperty -Path $mouseDesktop -Name "MouseThreshold1" -Value "0" -Type String -Force
 Set-ItemProperty -Path $mouseDesktop -Name "MouseThreshold2" -Value "0" -Type String -Force
 Set-ItemProperty -Path $mouseDesktop -Name "MouseSensitivity" -Value "10" -Type String -Force
 
-# เพิ่มสปีดคีย์บอร์ด
 $keyboardDesktop = "HKCU:\Control Panel\Keyboard"
 Set-ItemProperty -Path $keyboardDesktop -Name "KeyboardDelay" -Value "0" -Type String -Force
 Set-ItemProperty -Path $keyboardDesktop -Name "KeyboardSpeed" -Value "31" -Type String -Force
